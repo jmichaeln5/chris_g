@@ -5,6 +5,7 @@ ruby '2.5.0'
 
 gem 'hirb'
 gem 'devise'
+gem 'rename'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
