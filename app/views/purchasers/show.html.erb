@@ -1,9 +1,157 @@
-<p id="notice"><%= notice %></p>
+<style>
 
-<p>
-  <strong>Name:</strong>
-  <%= @purchaser.name %>
-</p>
+  @media (min-width: 640px) {
+    table {
+      display: inline-table !important;
+    }
 
-<%= link_to 'Edit', edit_purchaser_path(@purchaser) %> |
-<%= link_to 'Back', purchasers_path %>
+    thead tr:not(:first-child) {
+      display: none;
+    }
+  }
+
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
+
+  th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+  }
+</style>
+
+<div class="display-4" style="font-size:100%;">
+
+  <div>
+    <div class="w-5/6 ">
+      <!-- empty to level edit modal -->
+    </div>
+    <div class="display-1 w-1/6 float-right pb-3 mr-10" style="font-size:100%;">
+      <%= render "edit_modal"%>
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+
+  <div class="container">
+    <div class="text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+      <div class="display-1" style="font-size:300%;">
+
+        <%= @purchaser.name %>
+        <!-- ************************************************************** -->
+        <!-- ************************************************************** -->
+        <!-- ************************************************************** -->
+        <br>
+        <span class="display-1" style="font-size:40%;">Purchaser (Show) </span>
+        <!-- ************************************************************** -->
+        <!-- ************************************************************** -->
+        <!-- ************************************************************** -->
+
+      </div>
+    </div>
+    <br>
+    <%= link_to 'Add order', new_purchaser_order_path(@purchaser), class:"btn btn-success btn-block" %>
+
+  </div>
+
+  <div class="container pt-4">
+  <div class="bg-gray-100 text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+
+  <!-- component -->
+  <div class="flex items-center justify-center">
+
+  	<div class="container">
+      <table class="w-full flex flex-row flex-no-wrap sm:bg-white overflow-hidden sm:shadow-lg ">
+  			<tbody class="flex-1 sm:flex-none">
+
+
+          <div class="  rounded-t-2xl ">
+            <div class=" flex flex-col flex-no wrap w-full">
+              <br>
+
+              <div class="bg-teal-300 p-3 " >
+                <span style="font-size:200%;">
+                  <%= @purchaser.name %> Orders
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+              <% if @purchaser.orders.count > 0 %>
+
+              <%# @purchaser.orders.each do |order| %>
+              <% @orders.each do |order| %>
+        				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100">
+
+                  <td class="border-grey-light border hover:bg-gray-100 p-3">
+                    <%= link_to "Order Details", order_path(order) %>
+                    <!-- <%= order.id %> -->
+                  </td>
+
+                  <td class="border-grey-light border hover:bg-gray-100 p-3">
+                    <%= order.amount %> <%= order.content %>
+                    <!-- <%= order.id %> -->
+                  </td>
+
+                  <td class="border-grey-light border hover:bg-gray-100 p-3">
+                    <strong>Purchaser:</strong>
+                     <%= link_to " #{@purchaser.name}", @purchaser %>
+                  </td>
+
+                  <td class="border-grey-light border hover:bg-gray-100 p-3">
+                    <strong>Vendor:</strong>
+                     <!-- <%= link_to " #{order.vendor}", order %> -->
+                     <%= order.vendor%>
+                  </td>
+
+
+        					<td class=" text-center border-grey-light border p-2">
+
+
+                    <!-- Edit  -->
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-pencil-square " viewBox="0 0 16 16" style="height:10%; width:10%;" >
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    </svg> -->
+
+                    <!-- Delete  -->
+                      <!-- <span class="hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height:10%; width:10%;">
+                        <path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path>
+                      </svg>
+                    </span> -->
+
+
+                    <%= link_to 'Delete Order', order, method: :delete, data: { confirm: 'Are you sure? Once deleted you will never be able to recover this data.' }, class:"text-red-400 hover:text-red-600 hover:font-medium cursor-pointer" %>
+
+                  </td>
+
+        				</tr>
+
+              <% end %>
+
+          <% else %>
+
+          <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 ">
+            <h5 class="bg-red-200 p-4 text-center">No Orders Available.</h5>
+          </tr>
+
+          <% end %>
+
+  			</tbody>
+  		</table>
+
+  	</div>
+  </div>
+</div>
+
+</div>
+
+<br>
+
+</div>
+
+</div>

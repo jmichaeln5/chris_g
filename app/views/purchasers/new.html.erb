@@ -1,5 +1,10 @@
-<h1>New Purchaser</h1>
+<div class="border-gray-100 text-center">
+  <div class="display-4" style="font-size:300%;">
+    New Purchaser
+  </div>
+  <%= render 'form', purchaser: @purchaser %>
+</div>
 
-<%= render 'form', purchaser: @purchaser %>
 
-<%= link_to 'Back', purchasers_path %>
+
+    <!-- <%= link_to 'Back', :back %> -->

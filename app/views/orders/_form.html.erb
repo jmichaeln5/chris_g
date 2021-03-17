@@ -1,0 +1,61 @@
+<div class="p-4 border-gray-100 text-center">
+  <div class="display-4" style="font-size:100%;">
+
+<%#= form_with(model: @order, local: true) do |form| %>
+<%= form_with(model: [ @purchaser, @purchaser.orders.build ]) do |form| %>
+
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
+
+  <div class="field p-2">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"bg-gray-200 form-control" %>
+  </div>
+
+  <div class="field p-2">
+    <%= form.label :po_number, "PO Number" %>
+    <%= form.number_field :po_number, class:"bg-gray-200 form-control" %>
+  </div>
+
+  <div class="p-2" style="">
+    <%= form.label :date_recieved %>
+    <%= form.date_field :date_recieved, as: :date, value: form.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+  </div>
+
+  <div class="p-2" style="">
+    <%= form.label :date_delivered %>
+    <%= form.date_field :date_delivered, as: :date, value: form.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+  </div>
+
+
+  <div class="field p-2">
+    <%= form.label :distributed_by %>
+    <%= form.text_field :distributed_by, class:"bg-gray-200 form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vendor_id %>
+    <%= form.text_field :vendor_id, class:"bg-gray-200 form-control" %>
+  </div>
+
+  <div class="actions btn btn-success">
+  <%= button_tag(type: 'submit') do %>
+   Create Order
+  <% end %>
+  </div>
+
+<% end %>
+
+</div>
+</div>

@@ -10,15 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_195042) do
+ActiveRecord::Schema.define(version: 2021_03_17_000410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "purchasers", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.string "name"
+    t.string "vendor"
+    t.string "content"
+    t.integer "amount"
+    t.integer "po_number"
+    t.datetime "date_recieved"
+    t.datetime "date_delivered"
+    t.string "distributed_by"
+    t.bigint "purchaser_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["purchaser_id"], name: "index_orders_on_purchaser_id"
+  end
+
+  create_table "purchasers", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_purchasers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,4 +50,6 @@ ActiveRecord::Schema.define(version: 2021_03_16_195042) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orders", "purchasers"
+  add_foreign_key "purchasers", "users"
 end

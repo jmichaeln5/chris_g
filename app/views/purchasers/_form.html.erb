@@ -1,23 +1,41 @@
-<%= form_with(model: purchaser, local: true) do |form| %>
-  <% if purchaser.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(purchaser.errors.count, "error") %> prohibited this purchaser from being saved:</h2>
+<div class="p-4 border-gray-100 text-center">
+  <div class="display-4" style="font-size:100%;">
 
-      <ul>
-        <% purchaser.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="">
-    <%= form.label :name %>
-    <br>
-    <%= form.text_field :name, class:"bg-gray-200 " %>
+    <%= form_with(model: [ current_user, current_user.purchasers.build ]) do |form| %>
+      <% if purchaser.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(purchaser.errors.count, "error") %> prohibited this purchaser from being saved:</h2>
+
+          <ul>
+            <% purchaser.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="display-4" style="font-size:300%;">
+        <!-- <%= form.label :name %> -->
+        Add Purchaser
+        <div class="pt-4 pb-2"> <%= form.text_field :name, class:"bg-gray-200 form-control" %>
+        </div>
+      </div>
+
+      <!-- <div class="actions">
+        <%= form.submit %>
+      </div> -->
+
+      <br>
+
+      <div class="actions btn btn-success">
+      <%= button_tag(type: 'submit') do %>
+       Create Purchaser
+      <% end %>
+      </div>
+
+
+    <% end %>
+
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

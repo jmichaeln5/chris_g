@@ -1,38 +1,58 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"bg-gray-200 form-control" %>
+<div class="text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+  <div class="display-1" style="font-size:300%;">
+    Sign Up
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:"bg-gray-200 form-control" %>
-  </div>
+<br>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"bg-gray-200 form-control" %>
-  </div>
+<div class="text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+  <div class="display-1" style="font-size:150%;">
 
-  <!-- <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div> -->
 
-  <br>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="actions btn btn-success">
-    <%= button_tag(type: 'submit') do %>
-     Sign Up
+      <div class="field px-10 py-2">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"bg-gray-200 form-control" %>
+      </div>
+
+      <br>
+
+      <div class="field px-10 py-2">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class:"bg-gray-200 form-control" %>
+      </div>
+
+      <br>
+
+      <div class="field px-10 py-2">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"bg-gray-200 form-control" %>
+      </div>
+
+      <!-- <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div> -->
+
+      <br>
+
+      <div class="actions btn btn-success">
+        <%= button_tag(type: 'submit') do %>
+         Sign Up
+        <% end %>
+      </div>
+
     <% end %>
+
+    <br>
+      <div class="display-1" style="font-size:80%;">
+        <%= render "devise/shared/links" %>
+      </div>
+
+    </div>
   </div>
-
-<% end %>
-
-<%= render "devise/shared/links" %>

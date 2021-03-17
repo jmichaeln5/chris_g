@@ -25,21 +25,17 @@
     <div class="text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
       <div class="display-1" style="font-size:300%;">
 
-        All Purchasers
+        Order Information
         <!-- ************************************************************** -->
         <!-- ************************************************************** -->
         <!-- ************************************************************** -->
         <br>
-        <span class="display-1" style="font-size:40%;">Purchasers (Index v1) </span>
+        <span class="display-1" style="font-size:40%;">All Orders </span>
         <!-- ************************************************************** -->
         <!-- ************************************************************** -->
         <!-- ************************************************************** -->
-
       </div>
     </div>
-    <br>
-    <!-- <%= link_to 'Add Purchaser', new_user_purchaser_path(current_user), class:"btn btn-success btn-block" %> -->
-    <%= render "form_modal"%>
   </div>
 
   <div class="container pt-4">
@@ -59,32 +55,57 @@
 
               <div class="bg-teal-300 p-3 " >
                 <span style="font-size:200%;">
-                  All Purchasers
+                  All Orders
                 </span>
               </div>
 
             </div>
           </div>
 
-          <% if @purchasers.count > 0 %>
+          <% if @orders.count > 0 %>
 
-          <% @purchasers.each do |purchaser| %>
+          <% @orders.each do |order| %>
+
+
 
           				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100">
 
                     <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      <strong>Purchaser:</strong>
-                       <%= link_to " #{purchaser.name}", purchaser %>
+                      <!-- Purchaser: <%= order.purchaser.name %> -->
+                      Purchaser: <%= link_to "#{order.purchaser.name}", purchaser_path(order.purchaser) %>
                     </td>
 
                     <td class="border-grey-light border hover:bg-gray-100 p-3">
-                       <%= link_to "Add Order", new_purchaser_order_path(purchaser.id) %>
+                      Vendor: <%= order.vendor %>
                     </td>
 
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                      Order: <%= order.amount %>
+                      <%= order.content %>
+                    </td>
 
                     <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      <strong>Orders:</strong>
-                       <%= link_to " #{purchaser.orders.count}", purchaser %>
+                      PO# <%= order.po_number %>
+                    </td>
+
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                      <strong>Recieved:</strong>
+                      <br>
+                      <% if order.date_recieved.present? != true %>
+                        n/a
+                      <% else%>
+                      <%= " #{order.date_recieved.strftime("%m-%d-%y")}" %>
+                      <% end %>
+                    </td>
+
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                      <strong>Delivered:</strong>
+                      <br>
+                      <% if order.date_delivered.present? != true %>
+                        n/a
+                      <% else%>
+                      <%= " #{order.date_delivered.strftime("%m-%d-%y")}" %>
+                      <% end %>
                     </td>
 
 
@@ -105,21 +126,22 @@
                       </span> -->
 
 
-                      <%= link_to 'Delete Purchaser', purchaser, method: :delete, data: { confirm: 'Are you sure? Once deleted you will never be able to recover this data.' }, class:"text-red-400 hover:text-red-600 hover:font-medium cursor-pointer" %>
+                      <%= link_to 'Delete Order', order, method: :delete, data: { confirm: 'Are you sure? Once deleted you will never be able to recover this data.' }, class:"text-red-400 hover:text-red-600 hover:font-medium cursor-pointer" %>
 
                     </td>
 
           				</tr>
-
                   <% end %>
 
             <% else %>
 
             <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 ">
-              <h5 class="bg-red-200 p-4 text-center">No Vendors Available.</h5>
+              <h5 class="bg-red-200 p-4 text-center">No Orders Available.</h5>
             </tr>
 
             <% end %>
+
+
 
   			</tbody>
   		</table>

@@ -21,29 +21,16 @@
 
   <body class="bg-indigo-100">
     <%=render "layouts/nav"%>
-    <div class="container text-center pt-10 bg-gray-100 h-screen">
+    <div class="bg-gray-100 container text-center pt-10 pb-8 mb-10 h-full">
       <div class="msg-container text-center">
         <% if notice || alert %>
         <span class="notice text-green-700 text-2xl"><%= notice %></span>
         <span class="alert text-red-700 text-2xl"><%= alert %></span>
         <% end %>
       </div>
-      <div class="pl-20 pr-20">
+      <div class="bg-gray-100">
 
         <div class="display-4" style="font-size:100%;">
-          <div class="container">
-            <div class="text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
-              <div class="display-1" style="font-size:300%;">
-
-                <% if @set_page_title == true  %>
-                  <%= @page_title %>
-                <% else %>
-                  Test Title
-                <% end %>
-
-              </div>
-            </div>
-          </div>
           <%= yield %>
         </div>
       </div>

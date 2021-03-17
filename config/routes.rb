@@ -1,7 +1,25 @@
 Rails.application.routes.draw do
-  resources :purchasers
   root 'pages#index'
   devise_for :users
+
+  # resources :orders
+  # resources :purchasers
+
+  resources :users do
+    resources :purchasers, shallow: true
+  end
+
+  # resources :purchasers do
+  #   resources :orders, shallow: true
+  # end
+
+  resources :purchasers do          # Shallow
+    resources :orders, only: [:index, :new, :create]
+  end
+  resources :orders, only: [:show, :edit, :update, :destroy]
+
+  get 'all_orders', to: 'orders#all_orders'
+
 
   get 'pages/about'
   # get 'users/dashboard'
