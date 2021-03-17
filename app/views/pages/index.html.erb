@@ -282,7 +282,15 @@ font-weight: 300 !important;
             <br>
             <br>
 
-            <h1 class="mb-3 pt-10">Lightning Marine Services</h1>
+            <h1 class="mb-3 pt-10" >
+
+              <% if current_user %>
+                <a href="/users/<%= current_user.id%>/purchasers" style="color: white !important;">Lightning Marine Services</a>
+              <% else %>
+                <a href="/" style="color: white !important;">Lightning Marine Services</a>
+              <% end %>
+
+            </h1>
             <p class="mb-5">
               <strong> Welcome!</strong> Please select one of the buttons below to Sign in or Register.</p>
 
