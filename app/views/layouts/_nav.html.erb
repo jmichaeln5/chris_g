@@ -3,7 +3,8 @@
   <% if current_user.present? == false %>
     <a class="navbar-brand" href="/">Lightning Marine Services</a>
   <% else %>
-    <a class="navbar-brand" href="<%= dashboard_path%>">Lightning Marine Services</a>
+    <!-- <a class="navbar-brand" href="<%= dashboard_path%>">Lightning Marine Services</a> -->
+    <a class="navbar-brand" href="/">Lightning Marine Services</a>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

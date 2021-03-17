@@ -84,7 +84,7 @@
 
               <%# @purchaser.orders.each do |order| %>
               <% @orders.each do |order| %>
-        				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100">
+        				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 border-grey-400 mb-4">
 
                   <td class="border-grey-light border hover:bg-gray-100 p-3">
                     <%= link_to "Order Details", order_path(order) %>
@@ -98,7 +98,8 @@
 
                   <td class="border-grey-light border hover:bg-gray-100 p-3">
                     <strong>Purchaser:</strong>
-                     <%= link_to " #{@purchaser.name}", @purchaser %>
+                    <!-- <%= link_to " #{@purchaser.name}", @purchaser %> -->
+                    <%= @purchaser.name %>
                   </td>
 
                   <td class="border-grey-light border hover:bg-gray-100 p-3">

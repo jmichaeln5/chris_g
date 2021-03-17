@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DeviseLoginTemplate</title>
+    <title>LMS</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +20,11 @@
   </head>
 
   <body class="bg-indigo-100">
+
+    <% if @set_page_title == true %>
+      <%= yield %>
+
+    <% else %>
     <%=render "layouts/nav"%>
     <div class="bg-gray-100 container text-center pt-10 pb-8 mb-10 h-full">
       <div class="msg-container text-center">
@@ -35,6 +40,13 @@
         </div>
       </div>
     </div>
+
+    <% end %>
+
+
+
+
+
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
