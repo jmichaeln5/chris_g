@@ -80,16 +80,22 @@
           				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100">
 
                     <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      Vendor: <%= @order.vendor %>
+                      <strong>Vendor:</strong>
+                      <br>
+                       <%= @order.vendor %>
                     </td>
 
                     <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      Order: <%= @order.amount %>
+                      <strong>Order:</strong>
+                      <br>
+                      <%= @order.amount %>
                       <%= @order.content %>
                     </td>
 
                     <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      PO# <%= @order.po_number %>
+                      <strong>PO#</strong>
+                      <br>
+                      <%= @order.po_number %>
                     </td>
 
                     <td class="border-grey-light border hover:bg-gray-100 p-3">

@@ -92,18 +92,23 @@
                   </td>
 
                   <td class="border-grey-light border hover:bg-gray-100 p-3">
+                    <strong>Order:</strong>
+                    <br>
+
                     <%= order.amount %> <%= order.content %>
                     <!-- <%= order.id %> -->
                   </td>
 
                   <td class="border-grey-light border hover:bg-gray-100 p-3">
                     <strong>Purchaser:</strong>
+                    <br>
                     <!-- <%= link_to " #{@purchaser.name}", @purchaser %> -->
                     <%= @purchaser.name %>
                   </td>
 
                   <td class="border-grey-light border hover:bg-gray-100 p-3">
                     <strong>Vendor:</strong>
+                    <br>
                      <!-- <%= link_to " #{order.vendor}", order %> -->
                      <%= order.vendor%>
                   </td>
