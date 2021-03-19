@@ -1,0 +1,24 @@
+
+<div class="text-center">
+  <%= form_tag(results_search_index_path, method: "get") do |form| %>
+    <!-- <%#= label_tag(:q, "Search for:") %> -->
+      <!-- <%#= text_field_tag(:q) %> -->
+  <div class="pb-2" style="font-size:150%;">
+  Search Orders Vendor
+</div>
+  <div class="pb-4">
+  <%= text_field_tag(:q," ", value:"" , class:'form-control', style:"")%>
+</div>
+
+  <%= submit_tag("Search", class:'btn btn-outline-success') %>
+
+
+      <br>
+      <!-- <div class="actions btn btn-success">
+      <%= button_tag(type: 'submit') do %>
+       Search
+      <% end %>
+      </div> -->
+
+  <% end %>
+</div>

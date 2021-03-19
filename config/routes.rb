@@ -2,6 +2,15 @@ Rails.application.routes.draw do
   root 'pages#index'
   devise_for :users
 
+  # get 'search/index'
+  # get 'search/results'
+
+  resources :search, only: [:index] do
+    collection do
+      get 'results'
+    end
+  end
+
   # resources :orders
   # resources :purchasers
 

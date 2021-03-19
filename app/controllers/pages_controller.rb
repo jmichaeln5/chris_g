@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def index
-      @set_page_title = true
+      @set_landing_page = true
       @page_title = "pages/index"
   end
 

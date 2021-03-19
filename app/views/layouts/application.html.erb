@@ -21,28 +21,34 @@
 
   <body class="bg-indigo-100">
 
-    <% if @set_page_title == true %>
+  <% if @set_landing_page == true %>
       <%= yield %>
+  <% else %>
+      <%= render "layouts/nav"%>
+      <div class="bg-gray-100 container text-center pt-10 pb-8 mb-10 h-full">
+        <br>
+        <br>
 
-    <% else %>
-    <%=render "layouts/nav"%>
-    <div class="bg-gray-100 container text-center pt-10 pb-8 mb-10 h-full">
-      <div class="msg-container text-center">
-        <% if notice || alert %>
-        <span class="notice text-green-700 text-2xl"><%= notice %></span>
-        <span class="alert text-red-700 text-2xl"><%= alert %></span>
-        <% end %>
-      </div>
-      <div class="bg-gray-100">
+        <div class="msg-container text-center">
+          <% if notice || alert %>
+          <span class="notice text-green-700 text-2xl"><%= notice %></span>
+          <span class="alert text-red-700 text-2xl"><%= alert %></span>
+          <% end %>
+        </div>
 
-        <div class="display-4" style="font-size:100%;">
-          <%= yield %>
+        <div class="bg-gray-100">
+          <div class="display-4" style="font-size:100%;">
+
+            <div class="container">
+              <% if user_signed_in? %>
+                <%= render "layouts/tab_partial"%>
+              <% end %>
+            </div>
+            <%= yield %>
+          </div>
         </div>
       </div>
-    </div>
-
-    <% end %>
-
+  <% end %>
 
 
 

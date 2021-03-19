@@ -1,7 +1,8 @@
 class PurchasersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_purchaser, only: %i[ show edit update destroy ]
-  # before_action :set_title
+  before_action :set_title, only: :show
+  before_action :is_active_tab
 
   # GET /purchaser_orders
 
@@ -19,6 +20,8 @@ class PurchasersController < ApplicationController
     # @new_order = Order.new
     @orders = @purchaser.orders
     @order = Order.new
+
+    @page_title = "Purchasers#Show"
 
   end
 
@@ -72,10 +75,15 @@ class PurchasersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
 
-    # def set_title
-    #   @set_page_title = true
-    #   @page_title = "Purchasers"
-    # end
+    def set_title
+      @set_page_title = true
+      # @page_title = "Purchasers"
+    end
+
+    def is_active_tab
+      @active_purchasers_tab = true
+    end
+
 
     def set_purchaser
       @purchaser = Purchaser.find(params[:id])

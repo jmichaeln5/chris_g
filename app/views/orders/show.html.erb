@@ -21,20 +21,6 @@
 
 <div class="display-4" style="font-size:100%;">
 
-  <div>
-    <div class="w-5/6 ">
-      <!-- empty to level edit modal -->
-    </div>
-    <div class="display-1 w-1/6 float-right pb-3 mr-10" style="font-size:100%;">
-      <%= render "edit_modal"%>
-    </div>
-
-  </div>
-
-  <br>
-  <br>
-
-
   <div class="container">
     <div class="text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
       <div class="display-1" style="font-size:300%;">
@@ -116,6 +102,7 @@
                       <% else%>
                       <%= " #{@order.date_delivered.strftime("%m-%d-%y")}" %>
                       <% end %>
+
                     </td>
 
 

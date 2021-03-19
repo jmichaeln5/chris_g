@@ -1,0 +1,145 @@
+<style>
+
+  @media (min-width: 640px) {
+    table {
+      display: inline-table !important;
+    }
+
+    thead tr:not(:first-child) {
+      display: none;
+    }
+  }
+
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
+
+  th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+  }
+</style>
+
+<div class="display-4" style="font-size:100%;">
+
+  <div class="container">
+    <div class="text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+      <div class="display-1" style="font-size:300%;">
+
+        Search Results
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container pt-4">
+  <div class="bg-gray-100 text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+
+  <!-- component -->
+  <div class="flex items-center justify-center">
+
+  	<div class="container">
+      <table class="w-full flex flex-row flex-no-wrap sm:bg-white overflow-hidden sm:shadow-lg ">
+  			<tbody class="flex-1 sm:flex-none">
+
+
+          <div class="  rounded-t-2xl ">
+            <div class=" flex flex-col flex-no wrap w-full">
+              <br>
+
+              <div class="bg-teal-300 p-3 " >
+                <span style="font-size:200%;">
+                  <%= @orders.size %> Orders Found:
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+          <% if @orders.empty?  %>
+
+          <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 ">
+            <h5 class="bg-red-200 p-4 text-center">Sorry, No Orders Found.</h5>
+          </tr>
+
+          <% else %>
+
+          <% @orders.each do |order| %>
+
+
+
+          				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 border-grey-400 mb-4">
+
+                    <td class=" text-center border-grey-light border p-2">
+                      <!-- Order Details -->
+                      <%= link_to "Order Details", order_path(order)%>
+                    </td>
+
+
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                      <!-- Purchaser: <%= order.purchaser.name %> -->
+                      <strong>Purchaser:</strong>
+                      <br>
+                      <%= link_to "#{order.purchaser.name}", purchaser_path(order.purchaser) %>
+                    </td>
+
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                      <strong>Vendor:</strong>
+                      <br>
+                      <%= order.vendor %>
+                    </td>
+
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                      <strong>Order:</strong>
+                      <br>
+                      <%= order.amount %>
+                      <%= order.content %>
+                    </td>
+
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                      <strong>PO #:</strong>
+                      <br>
+                      <%= order.po_number %>
+                    </td>
+
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                      <strong>Recieved:</strong>
+                      <br>
+                      <% if order.date_recieved.present? != true %>
+                        n/a
+                      <% else%>
+                      <%= " #{order.date_recieved.strftime("%m-%d-%y")}" %>
+                      <% end %>
+                    </td>
+
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                      <strong>Delivered:</strong>
+                      <br>
+                      <% if order.date_delivered.present? != true %>
+                        n/a
+                      <% else%>
+                      <%= " #{order.date_delivered.strftime("%m-%d-%y")}" %>
+                      <% end %>
+                    </td>
+
+          				</tr>
+                  <% end %>
+
+
+            <% end %>
+
+
+
+  			</tbody>
+  		</table>
+
+  	</div>
+  </div>
+</div>
+
+</div>
+
+<br>
+
+</div>
+
+</div>

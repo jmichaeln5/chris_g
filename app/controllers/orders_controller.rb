@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: %i[ show edit update destroy ]
-  # before_action :set_title
+  before_action :set_title, only: :show
+  before_action :is_active_tab
 
 
 
@@ -20,6 +21,8 @@ class OrdersController < ApplicationController
   # GET /orders/1 or /orders/1.json
   def show
     @order = Order.find(params[:id])
+    @page_title = "Orders#Show"
+
   end
 
   # GET /orders/new
@@ -83,10 +86,14 @@ class OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
 
-    # def set_title
-    #   @set_page_title = true
-    #   @page_title = "Orders"
-    # end
+    def set_title
+      @set_page_title = true
+      # @page_title = "Orders"
+    end
+
+    def is_active_tab
+      @active_orders_tab = true
+    end
 
     def set_order
       @order = Order.find(params[:id])
