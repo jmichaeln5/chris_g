@@ -6,7 +6,8 @@ ruby '2.7.1'
 
 gem 'hirb'
 gem 'devise'
-gem 'rename'
+# gem 'rename'
+gem 'will_paginate', '~> 3.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.5'

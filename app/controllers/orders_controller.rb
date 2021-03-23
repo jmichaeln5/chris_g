@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
 
   # GET /all_orders
   def all_orders
-    @orders = Order.all
+    # @orders = Order.all
+    @orders = Order.paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
 
     # @test_pop = request.env['PATH_INFO']
     # @test_pop = __callee__

@@ -8,7 +8,9 @@ class PurchasersController < ApplicationController
 
   # GET /purchasers or /purchasers.json
   def index
-    @purchasers = Purchaser.all.reverse
+    # @purchasers = Purchaser.all.reverse
+    # @purchasers = Purchaser.paginate(page: params[:page])
+    @purchasers = Purchaser.paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
     @purchaser = current_user.purchasers.build
     @orders = @purchaser.orders
     @new_order = Order.new
