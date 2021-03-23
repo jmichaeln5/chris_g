@@ -36,14 +36,27 @@
           <% end %>
         </div>
 
+
+
+
+        <!-- <div class="container">
+          <% if user_signed_in? %>
+          <h1>
+            <%= controller.controller_name.capitalize + "#" + controller.action_name %>
+          </h1>
+          <% end %>
+        </div> -->
+
+
         <div class="bg-gray-100">
           <div class="display-4" style="font-size:100%;">
 
             <div class="container">
               <% if user_signed_in? %>
-                <%= render "layouts/tab_partial"%>
+                <%= render "layouts/top_tab_partial"%>
               <% end %>
             </div>
+
             <%= yield %>
           </div>
         </div>

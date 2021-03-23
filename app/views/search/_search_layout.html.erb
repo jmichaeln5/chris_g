@@ -1,0 +1,86 @@
+<nav class="-mb-2">
+  <div class="nav nav-pills bg-gray-100" id="nav-tab" role="tablist">
+
+    <!-- Search Purchasers Pill -->
+    <a class="bg-gray-100 nav-item nav-link" id="nav-search-purchasers-tab" data-toggle="tab" href="#nav-search-purchasers" role="tab" aria-controls="nav-search-purchasers" aria-selected="false">Purchasers</a>
+
+    <!-- Search Orders Pill -->
+    <a class="bg-gray-100 nav-item nav-link" id="nav-search-orders-tab" data-toggle="tab" href="#nav-search-orders" role="tab" aria-controls="nav-search-orders" aria-selected="false">Orders</a>
+
+    <!-- Search Vendors Pill -->
+    <a class="bg-gray-100 nav-item nav-link" id="nav-search-vendors-tab" data-toggle="tab" href="#nav-search-vendors" role="tab" aria-controls="nav-search-vendors" aria-selected="false">Vendors</a>
+
+
+  </div>
+</nav>
+
+
+<div class="tab-content " id="nav-tabContent">
+
+  <!-- Search Orders Pill -->
+  <!-- Search Orders Pill -->
+  <!-- Search Orders Pill -->
+  <div class="tab-pane fade " id="nav-search-orders" role="tabpanel" aria-labelledby="nav-search-orders-tab">
+    <br>
+    <div class="pl-1 p-4 border-b-2 border-gray-200">
+      <%= form_tag(results_search_index_path, method: "get") do |form| %>
+      <div class="" style="font-size:150%;">
+      Search Orders
+      </div>
+      <div class="">
+      <%= text_field_tag(:q," ", value:"" , class:'form-control', style:"")%>
+      </div>
+      <br>
+
+      <%= submit_tag("Search", class:'btn btn-outline-success') %>
+      <% end %>
+    </div>  </div>
+
+  <!-- Search Purchasers Pill -->
+  <!-- Search Purchasers Pill -->
+  <!-- Search Purchasers Pill -->
+  <div class="tab-pane fade " id="nav-search-purchasers" role="tabpanel" aria-labelledby="nav-search-purchasers-tab">
+
+    <br>
+    <div class="pl-1 p-4 border-b-2 border-gray-200">
+      <%= form_tag(results_search_index_path, method: "get") do |form| %>
+      <div class="" style="font-size:150%;">
+      Search Purchasers
+      </div>
+      <div class="">
+      <%= text_field_tag(:q," ", value:"" , class:'form-control', style:"")%>
+      </div>
+      <br>
+
+      <%= submit_tag("Search", class:'btn btn-outline-success') %>
+      <% end %>
+    </div>
+
+  </div>
+
+
+  <!-- Search Vendors Pill -->
+  <!-- Search Vendors Pill -->
+  <!-- Search Vendors Pill -->
+  <div class="tab-pane fade " id="nav-search-vendors" role="tabpanel" aria-labelledby="nav-search-vendors">
+      <br>
+      <div class="pl-1 p-4 border-b-2 border-gray-200">
+        <%= form_tag(results_search_index_path, method: "get") do |form| %>
+        <div class="" style="font-size:150%;">
+        Search Vendors
+        </div>
+        <div class="">
+        <%= text_field_tag(:q," ", value:"" , class:'form-control', style:"")%>
+        </div>
+        <br>
+
+        <%= submit_tag("Search", class:'btn btn-outline-success') %>
+        <% end %>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div class="mt-1"></div>

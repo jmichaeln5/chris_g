@@ -4,11 +4,13 @@ class OrdersController < ApplicationController
   before_action :set_title, only: :show
   before_action :is_active_tab
 
-
-
   # GET /all_orders
   def all_orders
     @orders = Order.all
+
+    # @test_pop = request.env['PATH_INFO']
+    # @test_pop = __callee__
+    # @test_pop = all_orders_path
   end
 
 
@@ -30,7 +32,6 @@ class OrdersController < ApplicationController
     # @order = Order.new
     @order = Order.new
     @purchaser = Purchaser.find(params[:purchaser_id])
-
   end
 
   # GET /orders/1/edit

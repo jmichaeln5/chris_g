@@ -1,15 +1,9 @@
 <nav class="-mb-2">
   <div class="nav nav-tabs bg-gray-100" id="nav-tab" role="tablist">
     <!-- Purchasers  -->
-    <% if (@page_title != "Purchasers#Show")%>
         <a class="bg-gray-100 nav-item nav-link  <%= "active" if @active_purchasers_tab == true %>" " id="nav-purchasers-tab" href="<%= user_purchasers_path(current_user)%>" role="tab" aria-controls="nav-purchasers" aria-selected="true">Purchasers</a>
-    <% end %>
-    <!-- Edit Purchasers -->
-    <% if (@set_page_title == true) && (@page_title == "Purchasers#Show")%>
-        <a class="bg-gray-100 nav-item nav-link" id="" data-toggle="tab" href="" role="tab" aria-controls="" aria-selected="false">
-          <%= render "purchasers/edit_modal"  %>
-        </a>
-    <% end %>
+
+
     <!--  Orders  -->
     <% if (@page_title != "Orders#Show")%>
         <a class="bg-gray-100 nav-item nav-link <%= "active" if @active_orders_tab == true %>" " id="nav-orders-tab" href="<%= all_orders_path %>" role="tab" aria-controls="nav-orders" aria-selected="false">Orders</a>
@@ -31,27 +25,20 @@
     <!-- Purchasers Tab -->
   </div>
 
-  <% if (@set_page_title == true) && (@page_title == "Orders#Show")%>
-  <div class="tab-pane fade" id="nav-edit-order" role="tabpanel" aria-labelledby="nav-edit-order-tab">
-    <!-- Edit Order Tab -->
-    <div class="p-8">
-      <%= render "orders/edit_partial"  %>
-    </div>
-  </div>
-  <% end %>
-
   <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-orders-tab">
     <!-- Orders Tab -->
   </div>
 
   <div class="tab-pane fade border-r-2 border-l-4 border-gray-200" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab">
       <!-- Search Tab -->
-      <div class="p-10  -mb-4">
-        <div class="p-4 border-gray-200 border-2">
-          <%= render "search/search_partial"%>
+      <div class="py-4">
+        <div class="pt-2">
+          <%#= render "search/search_partial"%>
+          <%= render "search/search_layout"%>
         </div>
       </div>
   </div>
+
 </div>
 
 <div class="mt-1"></div>

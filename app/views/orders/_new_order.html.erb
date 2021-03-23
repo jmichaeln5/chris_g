@@ -69,12 +69,32 @@
               Content
             </div>
         </div>
+
         <div class="input-group p-2">
           <%= form.number_field :amount, class: "form-control", placeholder: "ex: 3" %>
             <span class="input-group-addon">-</span>
-          <%= form.text_field :content, class: "form-control", placeholder: "ex: Pallets" %>
+
+
+          <%#= form.text_field :content, class: "form-control", placeholder: "ex: Pallets" %>
+
+          <select class="form-control" name="order[content]" id="order_content">
+            <option disabled selected value> -- Select Order Content -- </option>
+            <option>Boxes</option>
+            <option>Crates</option>
+            <option>Pallets</option>
+          </select>
+
+
+
+
+
+
+
         </div>
+
+
       </div>
+
 
       <!-- <div class="field p-2">
         <%= form.label :name %>

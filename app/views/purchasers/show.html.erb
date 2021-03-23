@@ -39,6 +39,13 @@
             <%= @purchaser.orders.count %> Orders
           </span>
         <% end %>
+
+        <br>
+        <span style="font-size:40%;">
+          <%= render "purchasers/edit_modal"%>
+        </span>
+
+
         <!-- ************************************************************** -->
         <!-- ************************************************************** -->
         <!-- ************************************************************** -->
@@ -60,21 +67,16 @@
   	<div class="container">
       <table class="w-full flex flex-row flex-no-wrap sm:bg-white overflow-hidden sm:shadow-lg ">
   			<tbody class="flex-1 sm:flex-none">
-
-
           <div class="  rounded-t-2xl ">
             <div class=" flex flex-col flex-no wrap w-full">
               <br>
-
               <div class="bg-teal-300 p-3 " >
                 <span style="font-size:200%;">
                   <%= @purchaser.name %> Orders
                 </span>
               </div>
-
             </div>
           </div>
-
               <% if @purchaser.orders.count > 0 %>
 
               <%# @purchaser.orders.each do |order| %>
@@ -107,7 +109,6 @@
                      <!-- <%= link_to " #{order.vendor}", order %> -->
                      <%= order.vendor%>
                   </td>
-
 
         					<td class=" text-center border-grey-light border p-2">
 

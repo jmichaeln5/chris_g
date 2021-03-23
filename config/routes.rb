@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get 'all_orders', to: 'orders#all_orders'
 
 
-  get 'pages/about'
+  get '/test' => 'pages#test_page'
   # get 'users/dashboard'
   get '/dashboard' => 'users#dashboard'
 
