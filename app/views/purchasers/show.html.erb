@@ -33,15 +33,15 @@
         <!-- <span class="display-1" style="font-size:40%;">Purchaser (Show) </span> -->
 
 
-        <br>
         <% if @purchaser.orders.count > 0 %>
+          <br>
           <span class="display-1" style="font-size:50%;">
             <%= @purchaser.orders.count %> Orders
           </span>
         <% end %>
 
-        <br>
         <span style="font-size:40%;">
+          <br>
           <%= render "purchasers/edit_modal"%>
         </span>
 
