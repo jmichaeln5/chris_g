@@ -3,5 +3,4 @@ class ApplicationController < ActionController::Base
     # dashboard_path
     user_purchasers_path(current_user)
   end
-  
 end

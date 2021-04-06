@@ -1,5 +1,4 @@
 <style>
-
   @media (min-width: 640px) {
     table {
       display: inline-table !important;
@@ -23,177 +22,163 @@
 
   <div class="container">
     <div class="text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
-      <div class="display-1" style="font-size:300%;">
-
+      <%= render "orders/download_modal"%>
+      <br>
+      <div class="display-1 -mt-8" style="font-size:300%;">
+        <br>
         All Orders
-        <!-- ************************************************************** -->
-        <!-- ************************************************************** -->
-        <!-- ************************************************************** -->
-        <!-- <span class="display-1" style="font-size:40%;">All Orders </span> -->
         <br>
         <% if @orders.count > 0 %>
           <span class="display-1" style="font-size:50%;">
             <%= @orders.count %> Orders
           </span>
         <% end %>
-
-        <!-- ************************************************************** -->
-        <!-- ************************************************************** -->
-        <!-- ************************************************************** -->
       </div>
     </div>
   </div>
-
   <br>
-
-
-  <!--  -->
-  <!--  -->
-  <!--  -->
-  <!--  -->
-
   <!-- Button trigger modal -->
-  <!-- <div class="container">
-    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModalLong">
-      New Order
-    </button>
-  </div> -->
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          New Order form
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
+  <div class="container">
+    <%= render "orders/add_order_modal"%>
   </div>
-  <!--  -->
-  <!--  -->
-  <!--  -->
-
-
 
   <div class="container pt-4">
-  <div class="bg-gray-100 text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+    <div class="bg-gray-100 text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+      <!-- component -->
+      <div class="flex items-center justify-center">
 
-  <!-- component -->
-  <div class="flex items-center justify-center">
+      	<div class="container">
+          <table class="w-full flex flex-row flex-no-wrap sm:bg-white overflow-hidden sm:shadow-lg ">
+      			<tbody class="flex-1 sm:flex-none">
 
-  	<div class="container">
-      <table class="w-full flex flex-row flex-no-wrap sm:bg-white overflow-hidden sm:shadow-lg ">
-  			<tbody class="flex-1 sm:flex-none">
+              <div class="  rounded-t-2xl ">
+                <div class=" flex flex-col flex-no wrap w-full">
+                  <br>
+
+                  <div class="bg-teal-300 p-3 " >
+                    <span style="font-size:200%;">
+                      All Orders
+                    </span>
+                    <br>
+
+                    <div class="btn-group flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
 
 
-          <div class="  rounded-t-2xl ">
-            <div class=" flex flex-col flex-no wrap w-full">
-              <br>
+                    </div>
 
-              <div class="bg-teal-300 p-3 " >
-                <span style="font-size:200%;">
-                  All Orders
-                </span>
+                  </div>
+                </div>
               </div>
 
-            </div>
-          </div>
+              <% if @orders.count > 0 %>
 
-          <% if @orders.count > 0 %>
+              <% @sort_orders.each do |order| %>
 
-          <% @orders.each do |order| %>
+              				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 border-grey-400 mb-4">
+
+                        <td class="border-grey-light border hover:bg-gray-100 p-3">
+                          <!-- Purchaser: <%= order.purchaser.name %> -->
+                          <span class="float-left"> <%= order.id %></span>
+                          <strong>Purchaser:</strong>
+                          <br>
+                          <%#= link_to "#{order.purchaser.name}", purchaser_path(order.purchaser) %>
+                          <%= order.name %>
+                        </td>
+
+                        <td class="border-grey-light border hover:bg-gray-100 p-3">
+                          <strong>Vendor:</strong>
+                          <br>
+                          <%= order.vendor %>
+                        </td>
+
+                        <td class="border-grey-light border hover:bg-gray-100 p-3">
+                          <strong>Order:</strong>
+                          <br>
+                          <%= order.amount %>
+                          <%= order.content %>
+                        </td>
+
+                        <td class="border-grey-light border hover:bg-gray-100 p-3">
+                          <strong>PO #:</strong>
+                          <br>
+                          <%= order.po_number %>
+                        </td>
+
+                        <td class="border-grey-light border hover:bg-gray-100 p-3">
+                          <strong>Recieved:</strong>
+                          <br>
+                          <% if order.date_recieved.present? != true %>
+                            n/a
+                          <% else%>
+                          <%= " #{order.date_recieved.strftime("%m-%d-%y")}" %>
+                          <% end %>
+                        </td>
+
+                        <td class="border-grey-light border hover:bg-gray-100 p-3">
+                          <strong>Delivered:</strong>
+                          <br>
+                          <% if order.date_delivered.present? != true %>
+                            n/a
+                          <% else%>
+                          <%= " #{order.date_delivered.strftime("%m-%d-%y")}" %>
+                          <% end %>
+                        </td>
 
 
+                        <td class=" text-center border-grey-light border p-2">
+                          <!-- Order Details -->
+                          <%= link_to "Order Details", order_path(order)%>
+                        </td>
 
-          				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 border-grey-400 mb-4">
-
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      <!-- Purchaser: <%= order.purchaser.name %> -->
-                      <strong>Purchaser:</strong>
-                      <br>
-                      <%= link_to "#{order.purchaser.name}", purchaser_path(order.purchaser) %>
-                    </td>
-
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      <strong>Vendor:</strong>
-                      <br>
-                      <%= order.vendor %>
-                    </td>
-
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      <strong>Order:</strong>
-                      <br>
-                      <%= order.amount %>
-                      <%= order.content %>
-                    </td>
-
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      <strong>PO #:</strong>
-                      <br>
-                      <%= order.po_number %>
-                    </td>
-
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      <strong>Recieved:</strong>
-                      <br>
-                      <% if order.date_recieved.present? != true %>
-                        n/a
-                      <% else%>
-                      <%= " #{order.date_recieved.strftime("%m-%d-%y")}" %>
+              				</tr>
                       <% end %>
-                    </td>
 
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">
-                      <strong>Delivered:</strong>
-                      <br>
-                      <% if order.date_delivered.present? != true %>
-                        n/a
-                      <% else%>
-                      <%= " #{order.date_delivered.strftime("%m-%d-%y")}" %>
-                      <% end %>
-                    </td>
+                <% else %>
 
+                <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 ">
+                  <h5 class="bg-red-200 p-4 text-center">No Orders Available.</h5>
+                </tr>
 
-                    <td class=" text-center border-grey-light border p-2">
-                      <!-- Order Details -->
-                      <%= link_to "Order Details", order_path(order)%>
-                    </td>
-
-          				</tr>
-                  <% end %>
-
-            <% else %>
-
-            <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 ">
-              <h5 class="bg-red-200 p-4 text-center">No Orders Available.</h5>
-            </tr>
-
-            <% end %>
+                <% end %>
 
 
 
-  			</tbody>
-  		</table>
-      <div class="p-2">
-        <%= will_paginate @orders, :class => 'p-2 text-center bg-blue-100' %>
+      			</tbody>
+      		</table>
+          <!-- <div class="p-2">
+            <%#= will_paginate @orders, :class => 'p-2 text-center bg-blue-100' %>
+          </div> -->
+      	</div>
       </div>
-  	</div>
+    </div>
   </div>
-</div>
-
-</div>
-
 <br>
-
 </div>
 
-</div>
+<script>
+
+$(document).ready(function () {
+
+
+
+  $("#sortDirection").change(function (event) {
+      var selectedSortDirection = $("#sortDirection").val()
+      console.log(selectedSortDirection);
+  });
+
+  $("#sortCategory").change(function (event) {
+      var selectedCategory = $("#sortCategory").val()
+      console.log(selectedCategory);
+  });
+
+
+  $( "#changeLinkVal" ).click(function() {
+    document.querySelector('.info_link').setAttribute('href', "<%= @locale_to %>?sort=" + $("#sortCategory").val() + "&direction=" + $("#sortDirection").val() );
+
+      alert($('.info_link').attr('href'));
+  });
+
+
+});
+
+</script>

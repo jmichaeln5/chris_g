@@ -1,0 +1,100 @@
+<div class="container py-8">
+  <div class="p-4  text-center">
+
+    <div class="display-4 " style="font-size:250%;">
+      Edit Order
+    </div>
+
+    <br>
+
+    <%= form_with(model: @order, local: true) do |form| %>
+
+      <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this @order from being saved:</h2>
+
+          <ul>
+            <% @order.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div id="invalidSelectPurchaser">
+        <%= form.label "Purchaser" %>
+        <%= form.label "#{@order.purchaser.name}", class: "form-control", disabled: true %>
+      </div>
+
+      <%= form.hidden_field :purchaser_id, value: @order.purchaser.id, class: "form-control" %>
+      <%= form.hidden_field :name, value: @purchaser.name, class: "" %>
+
+
+      <div class="field p-2">
+        <%= form.label "Vendor" %>
+        <%= form.text_field :vendor, class: "form-control", placeholder: "ex: Polar Express" %>
+      </div>
+
+      <div class="field p-2 text-center">
+        <div class="input-group p-2">
+            <div class="w-1/2 pr-4">
+              Amount
+            </div>
+
+            <div class="w-1/2 pl-4">
+              Content
+            </div>
+        </div>
+        <div class="input-group p-2">
+          <%= form.number_field :amount, class: "form-control", placeholder: "ex: 3" %>
+            <span class="input-group-addon">-</span>
+          <%= form.text_field :content, class: "form-control", placeholder: "ex: Pallets" %>
+        </div>
+      </div>
+
+      <div class="field p-2">
+        <%= form.label :po_number, "PO Number" %>
+        <%= form.number_field :po_number, class:" form-control", placeholder: "ex: 42069" %>
+      </div>
+
+      <div class="p-2" style="">
+        <%= form.label :date_recieved %>
+        <%= form.date_field :date_recieved, as: :date, value: form.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+      </div>
+
+      <div class="p-2" style="">
+        <%= form.label :date_delivered %>
+        <%= form.date_field :date_delivered, as: :date, value: form.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+      </div>
+
+
+      <div class="field p-2">
+        <%= form.label :distributed_by %>
+        <%= form.text_field :distributed_by, class:" form-control", placeholder: "ex: USPS" %>
+      </div>
+
+      <br>
+
+      <div class="actions btn btn-success">
+      <%= button_tag(type: 'submit') do %>
+       Update Order
+      <% end %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+
+      $(document).on("click","#invalidSelectPurchaser",function() {
+         alert("Cannot Change Purchaser for Order. Click Purchasers in menu to select another Purchaser and add to respective Purchaser. Push OK to continue.")
+      })
+
+
+
+})
+</script>

@@ -27,11 +27,6 @@
       <div class="display-1" style="font-size:300%;">
 
         <%= @purchaser.name %>
-        <!-- ************************************************************** -->
-        <!-- ************************************************************** -->
-        <!-- ************************************************************** -->
-        <!-- <span class="display-1" style="font-size:40%;">Purchaser (Show) </span> -->
-
 
         <% if @purchaser.orders.count > 0 %>
           <br>
@@ -39,25 +34,17 @@
             <%= @purchaser.orders.count %> Orders
           </span>
         <% end %>
-
-        <span style="font-size:40%;">
-          <br>
-          <%= render "purchasers/edit_modal"%>
-        </span>
-
-
-        <!-- ************************************************************** -->
-        <!-- ************************************************************** -->
-        <!-- ************************************************************** -->
-
       </div>
     </div>
     <br>
     <%= link_to 'Add order', new_purchaser_order_path(@purchaser), class:"btn btn-success btn-block" %>
 
   </div>
+  <br>
+  <%= render "layouts/under_header_tabs"%>
 
-  <div class="container pt-4">
+
+  <div class="container">
     <div class="text-center p-4  border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
     <!-- <div class="text-center p-4 border-r-2 border-b-2 border-l-4 border-gray-200"> -->
 

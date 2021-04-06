@@ -1,20 +1,43 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
+<nav class="">
+  <!-- Tab -->
+  <div class="nav nav-tabs bg-gray-100" id="nav-tab" role="tablist">
+    <!-- Edit  -->
+    <a class="bg-gray-100 nav-item nav-link" id="nav-edit-tab" data-toggle="tab" href="#nav-edit" role="tab" aria-controls="nav-edit" aria-selected="false">
+      Edit <%= controller_name.singularize.capitalize %>
+    </a>
+  </div>
+</nav>
+<!-- Tab Content -->
+<div class="tab-content " id="nav-tabContent">
+  <div class="tab-pane fade border-r-2 border-l-4 border-gray-200" id="nav-edit" role="tabpanel" aria-labelledby="nav-edit-tab">
+
+    <div class="p-4 float-right" id="removeSearchCard">
+      <button type="button" name="button">
+        <i class="far fa-window-close fa-2x text-gray-500 transition duration-500 ease-in-out hover:text-gray-700 transform hover:-translate-y-1 hover:scale-110"></i>
+      </button>
     </div>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
+    <br>
+
+    <div class="container">
+      <br>
+      <br>
+      <% if (@set_page_title == true) && ( (@page_title == "Orders#Show") || (@page_title == "Purchaser#Show") )%>
+        <%= render "orders/edit"%>
+      <% else %>
+      <div class="container">
+
+          <%= render "purchasers/edit"%>
+        </div>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+    $("#removeSearchCard").click(function(){
+      $("#nav-edit-tab").removeClass("active show");
+      $("#nav-edit").removeClass("active show");
+    });
+</script>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <span class="p-2"> <%= sortable "name", "Purchaser" %></span>
+      <span class="p-2"> <%= sortable "vendor" %></span>
+      <span class="p-2">Content</span>
+      <span class="p-2">Amount</span>
+      <span class="p-2">Po number</span>
+      <span class="p-2"> <%= sortable "date_recieved" %></span>
+      <span class="p-2"> <%= sortable "date_delivered" %></span>
+      <span class="p-2">Distributed by</span>
+      <span class="p-2">Purchaser</span>
+      <span class="p-2" colspan="3"></span>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sort_orders.each do |order| %>
+      <tr>
+        <td class="p-2"><%= order.name %></td>
+        <td class="p-2"><%= order.vendor %></td>
+        <td class="p-2"><%= order.content %></td>
+        <td class="p-2"><%= order.amount %></td>
+        <td class="p-2"><%= order.po_number %></td>
+        <td class="p-2"><%= order.date_recieved %></td>
+        <td class="p-2"><%= order.date_delivered %></td>
+        <td class="p-2"><%= order.distributed_by %></td>
+        <td class="p-2"><%= order.purchaser.name %></td>
+        <td class="p-2"><%= link_to 'Show', order %></td>
+        <td class="p-2"><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

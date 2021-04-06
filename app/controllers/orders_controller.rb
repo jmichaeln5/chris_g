@@ -6,9 +6,27 @@ class OrdersController < ApplicationController
 
   # GET /all_orders
   def all_orders
-    # @orders = Order.all
-    @orders = Order.paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+    @orders = Order.all
+    @sort_orders = @orders.order(params[:sort])
+    respond_to do |format|
+      format.html
+      format.csv {send_data @orders.to_csv}
+    end
 
+    # @orders = Order.paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+    # @test_pop = request.env['PATH_INFO']
+    # @test_pop = __callee__
+    # @test_pop = all_orders_path
+  end
+
+  def all_orders_2
+    @orders = Order.all
+    @sort_orders = @orders.order(params[:sort])
+    respond_to do |format|
+      format.html
+      format.csv {send_data @orders.to_csv}
+    end
+    # @orders = Order.paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
     # @test_pop = request.env['PATH_INFO']
     # @test_pop = __callee__
     # @test_pop = all_orders_path
@@ -25,6 +43,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @page_title = "Orders#Show"
+    @purchaser = @order.purchaser
 
   end
 

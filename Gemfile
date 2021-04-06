@@ -6,8 +6,10 @@ ruby '2.7.1'
 
 gem 'hirb'
 gem 'devise'
-# gem 'rename'
-gem 'will_paginate', '~> 3.1.0'
+gem 'ransack'
+# gem 'will_paginate', '~> 3.1.0'
+# gem "wice_grid", '3.6.0.pre4'
+gem 'font-awesome-sass',  '~> 4.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.5'

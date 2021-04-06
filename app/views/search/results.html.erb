@@ -48,14 +48,14 @@
 
               <div class="bg-teal-300 p-3 " >
                 <span style="font-size:200%;">
-                  <%= @orders.size %> Orders Found:
+                  <%= @results.size %> Orders Found:
                 </span>
               </div>
 
             </div>
           </div>
 
-          <% if @orders.empty?  %>
+          <% if @results.empty?  %>
 
           <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 ">
             <h5 class="bg-red-200 p-4 text-center">Sorry, No Orders Found.</h5>
@@ -63,9 +63,7 @@
 
           <% else %>
 
-          <% @orders.each do |order| %>
-
-
+          <% @results.each do |order| %>
 
           				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 bg-gray-100 border-grey-400 mb-4">
 

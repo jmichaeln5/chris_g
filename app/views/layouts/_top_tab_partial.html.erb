@@ -1,38 +1,44 @@
 <nav class="-mb-2">
   <div class="nav nav-tabs bg-gray-100" id="nav-tab" role="tablist">
     <!-- Purchasers  -->
-        <a class="bg-gray-100 nav-item nav-link  <%= "active" if @active_purchasers_tab == true %>" " id="nav-purchasers-tab" href="<%= user_purchasers_path(current_user)%>" role="tab" aria-controls="nav-purchasers" aria-selected="true">Purchasers</a>
-
+    <a class="bg-gray-100 nav-item nav-link  <%= "active" if @active_purchasers_tab == true %>" " id="nav-purchasers-tab" href="<%= user_purchasers_path(current_user)%>" role="tab" aria-controls="nav-purchasers" aria-selected="true">
+      Purchasers
+    </a>
 
     <!--  Orders  -->
-    <% if (@page_title != "Orders#Show")%>
-        <a class="bg-gray-100 nav-item nav-link <%= "active" if @active_orders_tab == true %>" " id="nav-orders-tab" href="<%= all_orders_path %>" role="tab" aria-controls="nav-orders" aria-selected="false">Orders</a>
-    <% end %>
+    <a class="bg-gray-100 nav-item nav-link <%= "active" if @active_orders_tab == true %>" " id="nav-orders-tab" href="<%= all_orders_path %>" role="tab" aria-controls="nav-orders" aria-selected="false">Orders</a>
 
-    <!-- Edit Order  -->
-    <% if (@set_page_title == true) && (@page_title == "Orders#Show")%>
-        <a class="bg-gray-100 nav-item nav-link" id="nav-edit-order-tab" data-toggle="tab" href="#nav-edit-order" role="tab" aria-controls="nav-edit-order" aria-selected="false">Edit Order</a>
-    <% end %>
-
+    <!--  Search  -->
     <a class="bg-gray-100 nav-item nav-link" id="nav-search-tab" data-toggle="tab" href="#nav-search" role="tab" aria-controls="nav-search" aria-selected="false">Search</a>
 
   </div>
 </nav>
 
-
 <div class="tab-content" id="nav-tabContent">
+
+  <!-- Purchasers Tab Content -->
   <div class="tab-pane fade show active" id="nav-purchasers" role="tabpanel" aria-labelledby="nav-purchasers-tab">
-    <!-- Purchasers Tab -->
   </div>
 
+
+  <!-- Orders Tab Content -->
   <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-orders-tab">
-    <!-- Orders Tab -->
   </div>
 
+
+  <!-- Search Tab Content -->
   <div class="tab-pane fade border-r-2 border-l-4 border-gray-200" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab">
-      <!-- Search Tab -->
       <div class="py-4">
         <div class="pt-2">
+
+          <div class="p-4 float-right" id="removeCard">
+            <button type="button" name="button">
+              <i class="far fa-window-close fa-2x text-gray-500 transition duration-500 ease-in-out hover:text-gray-700 transform hover:-translate-y-1 hover:scale-110"></i>
+            </button>
+          </div>
+          <br>
+          <br>
+
           <%#= render "search/search_partial"%>
           <%= render "search/search_layout"%>
         </div>
@@ -42,3 +48,10 @@
 </div>
 
 <div class="mt-1"></div>
+
+<script type="text/javascript">
+    $("#removeCard").click(function(){
+      $("#nav-search").removeClass("active show");
+      $("#nav-search-tab").removeClass("active show");
+    });
+</script>

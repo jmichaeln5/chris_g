@@ -8,13 +8,26 @@ class PurchasersController < ApplicationController
 
   # GET /purchasers or /purchasers.json
   def index
-    # @purchasers = Purchaser.all.reverse
+
+    @q = Purchaser.search(params[:q])
+    @purchasers = @q.result
+
+
+
     # @purchasers = Purchaser.paginate(page: params[:page])
-    @purchasers = Purchaser.paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+    # @purchasers = Purchaser.paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+
+    # @purchasers = Purchaser.all.reverse
     @purchaser = current_user.purchasers.build
     @orders = @purchaser.orders
     @new_order = Order.new
+    respond_to do |format|
+      format.html
+      format.csv {send_data @purchaser.to_csv}
+    end
   end
+
+
 
   # GET /purchasers/1 or /purchasers/1.json
   def show
