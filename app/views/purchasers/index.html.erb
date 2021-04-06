@@ -121,29 +121,3 @@
 </div>
 
 </div>
-
-<script type="text/javascript">
-
-
-axios.get("/purchasers.json")
-.then(response => {
-  const purchasers = response.data;
-  console.log(purchasers);
-})
-.catch(error => {
-console.log(error);
-});
-
-
-// var requestUrl = "https://localhost:3000/purchasers.json"
-//
-// $.ajax({
-//   url: requestUrl,
-//   cache: false,
-//   success: function(){
-//     // $("#results").append(html);
-//     console.log(data);
-//   }
-// });
-
-</script>
