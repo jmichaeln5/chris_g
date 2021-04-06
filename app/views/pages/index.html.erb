@@ -1,29 +1,4 @@
-<!-- <h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p> -->
-
-
-
-
-
-
-
-
 <style media="screen">
-
-/* ***********   CSS MIN (START) *********** */
-/* ***********   CSS MIN (START) *********** */
-/* ***********   CSS MIN (START) *********** */
-/* ***********   CSS MIN (START) *********** */
-/* ***********   CSS MIN (START) *********** */
-
-
-
-
-/* ***********   CSS MIN (END) *********** */
-/* ***********   CSS MIN (END) *********** */
-/* ***********   CSS MIN (END) *********** */
-/* ***********   CSS MIN (END) *********** */
-
 
 html {
 height: 100%;
@@ -230,14 +205,6 @@ font-weight: 300 !important;
 
 </style>
 
-<!-- Head/Body (Start)  -->
-<!-- Head/Body (Start)  -->
-<!-- Head/Body (Start)  -->
-<!-- Head/Body (Start)  -->
-<!-- Head/Body (Start)  -->
-
-
-
 <head>
 
   <meta charset="utf-8">
@@ -245,24 +212,15 @@ font-weight: 300 !important;
   <meta name="description" content="">
   <meta name="author" content="">
 
-
-  <!-- Bootstrap core CSS -->
-
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-  <!-- Custom styles for this template -->
-
+  <!-- <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
 </head>
 
 <body>
 
   <div class="overlay"></div>
-  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="mp4/bg.mp4" type="video/mp4">
-  </video>
 
   <div class="masthead">
     <div class="masthead-bg"></div>
@@ -287,7 +245,7 @@ font-weight: 300 !important;
               <% if current_user %>
                 <a href="/users/<%= current_user.id%>/purchasers" style="color: white !important;">Lightning Marine Services</a>
               <% else %>
-                <a href="/" style="color: white !important;">Lightning Marine Services</a>
+                <a href="/users/sign_in" style="color: white !important;">Lightning Marine Services</a>
               <% end %>
 
             </h1>
